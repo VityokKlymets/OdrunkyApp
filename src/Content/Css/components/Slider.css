@@ -1,0 +1,60 @@
+.Slider{
+    cursor: pointer;
+    margin: 0 auto;
+    background: #e8e6e5;
+    padding: 20px;
+    padding-bottom: 60px;
+    box-shadow: 0px -2px 10px rgba(0,0,0,.5) inset;
+    overflow: hidden;
+}
+.Slider .slide{
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    height: 450px;
+}
+.Slider img{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 10px 8px 20px rgba(0,0,0,.5);
+}
+.Slider img.active{
+    display: block;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+.Slider .controls{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    background: #333;
+    opacity: 0.8;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 4px 0;
+}
+.Slider .controls button{
+    box-sizing: border-box;
+    background : #ccc;
+    opacity: 0.3;
+    border-radius: 50%;
+    transition: opacity 0.7s ease-in-out;
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+}
+.Slider .controls button:hover{
+    opacity: 0.5;
+    box-shadow: -1px 1px 5px rgba(0,0,0,.8) inset;
+}
+.Slider .controls button.active{
+    opacity: 0.1;
+}

@@ -1,0 +1,51 @@
+.AlbumForm {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.AlbumForm form {
+  position: relative;
+  margin: 100px auto;
+  background: #fff;
+  width: 500px;
+  padding: 50px 20px;
+}
+.AlbumForm h1 {
+  padding-left: 20px;
+  margin: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  font-size: 1.6em;
+}
+.AlbumForm label {
+  display: block;
+  margin: 5px 0;
+}
+.AlbumForm input {
+  display: block;
+  padding-left: 10px;
+  font-size: 1.3em;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px 0;
+}
+.AlbumForm input[type="file"] {
+  display: block;
+  border: 0;
+  outline: none;
+  padding: 0;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+.AlbumForm button {
+  margin: 10px 0;
+}
+.AlbumForm .close-button{
+  position: absolute;
+  right: -48px;
+  top :-48px;
+  cursor: pointer;
+}

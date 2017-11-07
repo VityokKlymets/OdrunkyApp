@@ -1,0 +1,33 @@
+.NavArrow{
+    display: inline-block;
+    padding-left: 30px;
+    background-color: #FF5600;
+    height: 50px;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(0,0,0,.5);
+}
+.SlidedNav{
+    position: fixed;
+    left: -100%;
+    top : 50%;
+}
+.NavArrow:after{
+    content: "";
+    position: absolute;
+    top : 0;
+    right: -100px;
+    border: 25px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 40px solid transparent;
+    border-left: 75px solid #FF5600;
+    border-radius: 1px;
+}
+.NavArrow button{
+    margin-right: 20px;
+    height: 100%;
+    transition: all .9s ease-in-out;
+}
+.NavArrow button:hover{
+    color : #FFAE73;
+    transform: translateX(10px);
+}

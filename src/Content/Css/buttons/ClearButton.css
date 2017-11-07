@@ -1,0 +1,17 @@
+.clear-button{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.clear-button:hover{
+    box-shadow: 1px 1px 5px rgba(0,0,0,.5) inset;
+}
+.clear-button img {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,10 @@
+import './Footer.css';
+import './Foreword.css';
+import './Header.css';
+import './Info.css';
+import './Leaf.css';
+import './SlidedNav.css';
+import './Slider.css';
+import './ToDoList.css';
+import './NavBar.css';
+import * as css from './Gallery/index';
