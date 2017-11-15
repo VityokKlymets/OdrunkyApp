@@ -21,7 +21,7 @@
 .Photo .right{
     right: 0;
 }
-.Photo .left, .right{
+.Photo .left, .Photo .right{
     position: absolute;
     top: 0;
     bottom: 0;
@@ -31,7 +31,7 @@
     opacity: 0.06;
     transition: opacity .5s ease-in-out;
 }
-.Photo .left:hover,.right:hover{
+.Photo .left:hover, .Photo .right:hover{
     opacity: 0.8;
 }
 .Photo img{

@@ -7,6 +7,7 @@
     height: 30px;
     border-radius: 50%;
     cursor: pointer;
+    background: #fff;
 }
 .clear-button:hover{
     box-shadow: 1px 1px 5px rgba(0,0,0,.5) inset;

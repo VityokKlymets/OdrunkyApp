@@ -41,15 +41,19 @@ class PhotoGrid extends React.Component {
           {images.map((img, idx) => {
             return (
               <div className="GridElement" key={idx}>
-                {this.state.edit ? (
+                {this.state.edit && (
                   <ClearButton
                     onClick={() => {
-                      this.props.deleteAlbumPhoto(albumId, idx);
+                      let photoName = img.substring(img.lastIndexOf("/") + 1);
+                      this.props.deleteAlbumPhoto(albumId, idx, photoName);
                     }}
                   />
-                ) : null}
+                )}
                 <Link to={`${this.props.match.url}/${idx}`}>
-                  <img src={img} className="scalable" />
+                  <div
+                    className="scalable full-img"
+                    style={{ backgroundImage: `url(${img})` }}
+                  />
                 </Link>
               </div>
             );

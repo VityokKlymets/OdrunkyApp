@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import CloseButton from '../buttons/CloseButton';
+import CloseButton from "../buttons/CloseButton";
 import { Link } from "react-router-dom";
 class Photo extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Photo extends React.Component {
       currentId: parseInt(this.props.match.params.photoId),
       images: this.props.albums.filter(album => {
         return album._id == albumId;
-      })[0].images,
+      })[0].images
     };
   }
   nextImg() {
@@ -43,7 +43,12 @@ class Photo extends React.Component {
               this.previousImg();
             }}
           />
-          <img src={this.state.images[this.state.currentId]} />
+          <div
+            className="full-img"
+            style={{
+              backgroundImage: `url(${this.state.images[this.state.currentId]})`
+            }}
+          />
           <div
             className="right"
             onClick={() => {
@@ -51,7 +56,7 @@ class Photo extends React.Component {
             }}
           />
           <Link to={`/gallery/view/${albumId}`}>
-             <CloseButton/>
+            <CloseButton />
           </Link>
         </div>
       </div>

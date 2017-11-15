@@ -1,6 +1,4 @@
 .Header{
-    padding: 10px;
-    background: #fff;
     position: relative;
 }
 .Header h1{
@@ -10,27 +8,37 @@
     width: 400px;
     vertical-align: top;
 }
-.Header img{
+.Header .logo{
+    display: inline-block;
     width: 100px;
     height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.Header .head{
+    padding: 20px;
 }
 .Header nav{
-    position: absolute;
-    top: 0;
-    right: 20px;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
 }
 .Header nav ul{
     margin: 0;
+   
 }
 .Header nav li{
-    padding: 10px;
+    padding: 5px;
     list-style: none;
     display: inline-block;
+    margin: 10px 10px;
+    border:1px solid #a7a7a7;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
 }
 .Header nav a{
     text-decoration: none;
     text-transform: uppercase;
     color: #444;
-    border-bottom: 2px solid #000;
+    text-shadow:0px 1px 0px #fff;
     outline: none;
 }

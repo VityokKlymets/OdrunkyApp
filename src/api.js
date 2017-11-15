@@ -11,7 +11,7 @@ export default {
       return axios.delete(`/Albums/${params.id}`);
     },
     deleteAlbumPhoto: params => {
-      return axios.delete(`/Albums/${params.albumId}/${params.photoId}`);
+      return axios.delete(`/Albums/${params.albumId}/${params.photoId}/${params.photoName}`);
     },
     addPhotoToAlbum: params => {
       console.log(params);

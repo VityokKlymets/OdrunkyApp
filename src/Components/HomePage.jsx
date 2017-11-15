@@ -4,6 +4,7 @@ import Header from "./Header";
 import Foreword from "./Foreword";
 import Info from "./Info";
 import Footer from "./Footer";
+import Passport from "./Passport";
 import Images from "../Content/Images/sliderImages";
 import $ from "jquery";
 class HomePage extends React.Component {
@@ -16,6 +17,7 @@ class HomePage extends React.Component {
       <div className="HomePage">
         <Header />
         <Slider Images={ImagesSrc} />
+        <Passport />
         <Foreword />
         <Info />
         <Footer />
@@ -25,19 +27,41 @@ class HomePage extends React.Component {
   componentDidMount() {
     //for parallax efect
     $(() => {
+      let slide = $(".Slider .slide"),
+        controlsBlock = $(".Slider .controls-block"),
+        fore_text = $(".Foreword .fore-text");
       $(window).bind("scroll", () => {
-        console.log("somth");
-        let wScroll = $(window).scrollTop(),
-          SlideIt = function(DOMElement, speed) {
-            let amount = wScroll / speed;
-            let transformStr = `translate3d(0,${amount}%,0)`;
-            $(DOMElement).css({
-              transform: transformStr
-            });
-          };
+        let wScroll = $(window).scrollTop();
+        function SlideIt(DOMElement, speed) {
+          let amount = wScroll / speed;
+          let transformStr = `translate3d(0,${amount}%,0)`;
+          $(DOMElement).css({
+            transform: transformStr
+          });
+        }
+        function inFocus(jqueryElement) {
+          let offsetTop = jqueryElement.offset().top,
+            height = $(window).height();
+          return wScroll > offsetTop-100&& wScroll < offsetTop+height;
+        }
 
-        let slider = $(".Slider .slide");
-        SlideIt(slider, 40);
+        fore_text.each((index, element) => {
+          let block = $(element);
+          if (inFocus(block)) {
+            block.addClass('active');
+          }
+          // else{
+          //   block.removeClass('active');
+          // }
+        });
+
+       if(inFocus(slide)){
+         controlsBlock.addClass('active');
+       }
+       else{
+         controlsBlock.removeClass('active');
+       }
+
       });
     });
   }

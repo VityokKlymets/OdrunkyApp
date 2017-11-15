@@ -1,44 +1,35 @@
 .Foreword{
-    padding: 20px;
+    margin: 20px 0px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
     color : #422c27;
     font-size : 1.2em;
-    background: #f2efed;
     text-align: right;
     overflow: hidden;
-    padding: 20px;
-}
-
-.Foreword img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    box-shadow: 5px 5px 10px rgba(0,0,0,.7);
+    padding: 0 40px;
+    position: relative;
+    perspective: 1000px;
 }
 .Foreword p{
-    border-radius: 30px;
+    display: inline-block;
+    border-radius: 10px;
     padding: 20px;
-    display: inline-block;
-    vertical-align: top;
     width: 50%;
-    box-shadow: -5px 3px 10px rgba(0,0,0,.5);
-    position: relative;
+    box-shadow: 0px 3px 10px rgba(0,0,0,.5);
 }
-.Foreword p::after{
-    content: "";
-    display: block;
-    position: absolute;
-    right: -40px;
-    top : 10%;
-    border-top : 18px solid transparent;
-    border-bottom:  18px solid transparent;
-    border-left: 40px solid #c0cad8;
-    border-radius: 50%;
-    width: 0px;
-    height: 0px;
+.Foreword .fore-text{
+    transition: transform 1s ease-in-out;
 }
-.Foreword figure{
-    display: inline-block;
+.Foreword .fore-text:nth-child(odd){
+    text-align: left;
+    transform: rotate3d(0,1,0,-90deg);
 }
-.Foreword figcaption{
-    text-align: center;
+.Foreword .fore-text:nth-child(2){
+    transform: rotate3d(0,1,0,90deg);
+    text-align: right;
+}
+.Foreword .fore-text:nth-child(2).active{
+    transform: rotate3d(0,1,0,0deg);
+}
+.Foreword .fore-text:nth-child(odd).active{
+    transform: rotate3d(0,1,0,0deg);
 }

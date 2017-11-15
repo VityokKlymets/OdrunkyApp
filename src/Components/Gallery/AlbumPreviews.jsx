@@ -6,48 +6,74 @@ import { bindActionCreators } from "redux";
 import BackButton from "../buttons/BackButton";
 import CreateButton from "../buttons/CreateButton";
 import AddButton from "../buttons/AddButton";
-import {Link } from 'react-router-dom';
-import { addAlbum, turnEditAlbums ,toggleAddAlbumForm } from "../actionCreators/gallery/albums";
+import { Link } from "react-router-dom";
+import {
+  addAlbum,
+  turnEditAlbums,
+  toggleAddAlbumForm
+} from "../actionCreators/gallery/albums";
 import AlbumForm from "./AlbumForm";
+import Preloader from "../Preloader";
 class AlbumPreviews extends React.Component {
   constructor(props) {
     super(props);
   }
+  renderPreloader() {
+    return <Preloader type="small" fixed={true}/>;
+  }
+  renderNavbar() {
+    return (
+      <NavBar>
+        <BackButton path="/" />
+        <CreateButton
+          onClick={() => {
+            this.editToggle();
+          }}
+        />
+        <AddButton
+          onClick={() => {
+            this.props.toggleAddAlbumForm();
+          }}
+        />
+      </NavBar>
+    );
+  }
+  renderAlbumForm() {
+    return (
+      <AlbumForm
+        OnSubmit={data => {
+          this.props.addAlbum(data);
+          this.props.toggleAddAlbumForm();
+        }}
+        CloseForm={() => {
+          this.props.toggleAddAlbumForm();
+        }}
+      />
+    );
+  }
+  renderPreviews() {
+    return (
+      <div className="AlbumPreviews">
+        {this.props.AlbumData.map((albumData, idx) => {
+          return (
+            <AlbumPreview
+              path={this.props.match.path}
+              data={albumData}
+              key={idx}
+            />
+          );
+        })}
+      </div>
+    );
+  }
   render() {
     return (
       <div>
-        <NavBar>
-          <BackButton path="/" />
-          <CreateButton
-            onClick={() => {
-              this.editToggle();
-            }}
-          />
-          <AddButton
-            onClick={() => {
-              this.props.toggleAddAlbumForm();
-            }}
-          />
-        </NavBar>
-        <div className="AlbumPreviews">
-          {this.props.AlbumData.map((albumData, idx) => {
-            return (
-                <AlbumPreview path={this.props.match.path} data={albumData} key={idx}/>
-            );
-          })}
-        </div>
-        {this.props.albumFormData &&
-        (
-          <AlbumForm
-            OnSubmit={data => {
-              this.props.addAlbum(data);
-              this.props.toggleAddAlbumForm();
-            }}
-            CloseForm={() => {
-              this.props.toggleAddAlbumForm();
-            }}
-          />
-        )}
+        {this.renderNavbar()}
+        {this.props.albumSending&&!this.props.albumSended
+          ? this.renderPreloader()
+          : this.renderPreviews()}
+        {this.props.albumFormData && this.renderAlbumForm()}
       </div>
     );
   }
@@ -61,7 +87,9 @@ const mapStateToProps = state => {
   return {
     AlbumData: state.albums,
     edit: state.ui.albumsEdit,
-    albumFormData : state.ui.albumFormData,
+    albumFormData: state.ui.albumFormData,
+    albumSended : state.ui.albumSended,
+    albumSending: state.ui.albumSending,
   };
 };
 const mapDispathToProps = dispatch => {

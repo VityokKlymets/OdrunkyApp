@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 
 import {
   removeAlbum,
-  changeAlbumName,
-  changeAlbumDescription,
   deleteAlbum,
   changeAlbumData
 } from "../actionCreators/gallery/albums";
@@ -18,7 +16,6 @@ import DeleteButton from "../buttons/DeleteButton";
 class AlbumPreview extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.data);
     this.state = {
       edit: false,
       data : {
@@ -111,8 +108,6 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      changeAlbumDescription,
-      changeAlbumName,
       removeAlbum,
       deleteAlbum,
       changeAlbumData

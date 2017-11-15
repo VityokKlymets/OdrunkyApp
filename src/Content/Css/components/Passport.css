@@ -1,0 +1,26 @@
+.Passport {
+    padding: 20px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 1px -2px 10px rgba(0,0,0,.3);
+}
+.Passport .pass-block{
+    width: 300px;
+    display: inline-block;
+    box-shadow: 1px 2px 10px rgba(0,0,0,.5);
+    margin: 0 20px;
+}
+.pass-block h3{
+    border-bottom: 1px solid #000;
+}
+.Passport .pass-img{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.Passport .pass-block span{
+    display: block;
+    font-weight: bold;
+}

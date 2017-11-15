@@ -1,7 +1,5 @@
 import {
   PROMISE,
-  CHANGE_ALBUM_DESCRIPTION,
-  CHANGE_ALBUM_NAME,
   REMOVE_ALBUM_PHOTO,
   REMOVE_ALBUM,
   TURN_EDIT_ALBUMS,
@@ -37,17 +35,18 @@ export const deleteAlbum = id =>{
         type : PROMISE,
         loadState: ["ALBUM_DELETE_LOADING","ALBUM_DELETED","ALBUM_DELETE_FAILURE"],
         apiFunc : api.albums.deleteAlbum,
-        params : { id}
+        params : {id}
     }
 }
-export const deleteAlbumPhoto = (albumId, photoId) => {
+export const deleteAlbumPhoto = (albumId, photoId,photoName) => {
   return{
     type: PROMISE,
     loadState: ["PHOTO_DELETE_LOADING","PHOTO_DELETED","PHOTO_DELETE_FAILURE"],
     apiFunc : api.albums.deleteAlbumPhoto,
     params : {
       albumId,
-      photoId
+      photoId,
+      photoName
     }
   };
 };
@@ -59,20 +58,6 @@ export const loadAlbums = () => {
   };
 };
 
-export const changeAlbumDescription = (albumIdx, text) => {
-  return {
-    type: CHANGE_ALBUM_DESCRIPTION,
-    albumIdx,
-    text
-  };
-};
-export const changeAlbumName = (albumIdx, text) => {
-  return {
-    type: CHANGE_ALBUM_NAME,
-    albumIdx,
-    text
-  };
-};
 export const removeAlbum = albumIdx => {
   return {
     type: REMOVE_ALBUM,

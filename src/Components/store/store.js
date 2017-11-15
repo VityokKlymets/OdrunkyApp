@@ -6,8 +6,13 @@ const initialState = {
   albums: [],
   ui: {
     albumsEdit: false,
-    albumFormDataSending : false,
+    albumSending : false,
+    albumSended : false,
     albumFormData : false,
+
+    albumsLoaded : false,
+    albumsLoading : false,
+
   }
 };
 let createStoreWithMiddleware = applyMiddleware(apiMiddleware)(createStore);
