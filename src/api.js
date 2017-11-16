@@ -14,11 +14,9 @@ export default {
       return axios.delete(`/Albums/${params.albumId}/${params.photoId}/${params.photoName}`);
     },
     addPhotoToAlbum: params => {
-      console.log(params);
-      return axios.post("/Albums/photos/", {params });
+      return axios.post("/Albums/photos/", { params });
     },
     changeAlbumData : params =>{
-      console.log(params);
       return axios.post("/Albums/change",{params});
     }
   }
