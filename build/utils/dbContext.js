@@ -10,6 +10,10 @@ exports.removeAlbum = removeAlbum;
 exports.removeAlbumPhoto = removeAlbumPhoto;
 exports.addPhotoToAlbum = addPhotoToAlbum;
 exports.changeAlbumData = changeAlbumData;
+exports.getBookmarks = getBookmarks;
+exports.addBookmark = addBookmark;
+exports.removeBookmark = removeBookmark;
+exports.changeBookmark = changeBookmark;
 
 var _mongoose = require("mongoose");
 
@@ -29,12 +33,14 @@ var _fs2 = _interopRequireDefault(_fs);
 
 require("../models/Album");
 
+require("../models/Bookmark");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SERVER_ROOT = _config2.default.serverRoot;
 var DEVELOPMENT_ROOT = _config2.default.developmentRoot;
 var Album = _mongoose2.default.model("Album");
-
+var Bookmark = _mongoose2.default.model("Bookmark");
 function setUpConnection() {
   _mongoose2.default.connect("mongodb://" + _config2.default.db.host + ":" + _config2.default.db.port + "/" + _config2.default.db.name);
 }
@@ -142,6 +148,50 @@ function changeAlbumData(albumId, name, description) {
         if (err) reject;
         resolve();
       });
+    });
+  });
+}
+
+function getBookmarks() {
+  return new Promise(function (resolve, reject) {
+    Bookmark.find({}, function (err, res) {
+      if (err) reject(err);
+      resolve(res);
+    });
+  });
+}
+function addBookmark(data) {
+  return new Promise(function (resolve, reject) {
+    var bookmark = new Bookmark({
+      head: data.head,
+      text: data.text
+    });
+    bookmark.save(function (err, obj) {
+      if (err) reject(err);
+      resolve(obj);
+    });
+  });
+}
+function removeBookmark(id) {
+  return new Promise(function (resolve, reject) {
+    Bookmark.findOne({
+      _id: id
+    }, function (err, res) {
+      if (err) reject(err);
+      res.remove(resolve({ id: id }));
+    });
+  });
+}
+function changeBookmark(data) {
+  return new Promise(function (resolve, reject) {
+    var id = data.id;
+    Bookmark.findOne({
+      _id: id
+    }, function (err, res) {
+      if (err) reject(err);
+      res.head = data.head ? data.head : res.head;
+      res.text = data.text ? data.text : res.text;
+      res.save(resolve(res));
     });
   });
 }
