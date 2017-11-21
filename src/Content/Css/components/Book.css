@@ -1,0 +1,98 @@
+.book-wrapper{
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+.Book {
+  height: 100%;
+}
+.Book h1 {
+  margin: 0;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.Book section p {
+  font-size: 1.1em;
+  margin: 0;
+  padding: 0;
+  text-indent: 1.2em;
+  line-height: 1.8em;
+}
+
+.Book section p::first-letter {
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: #f80;
+}
+.Book nav li {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 0;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ddd;
+}
+.Book nav label{
+  display: block;
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+.Book nav .clear-button{
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+}
+.Book nav input {
+  border: 0;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  width: 280px;
+  outline: 1px solid #ccc;
+  margin: 10px 0;
+}
+.Book textarea {
+  border: 0;
+  font-size: 1.4em;
+  outline: none;
+  border-bottom: 2px dashed #ccc;
+  background: inherit;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 10px;
+  top: 80px;
+}
+.Book nav li:hover {
+  color: rgb(61, 60, 59);
+}
+.Book nav li.active {
+  border-right: 2px solid #ccc;
+}
+.Book nav ul {
+  margin: 0;
+  padding: 0;
+}
+.Book > nav {
+  box-sizing: border-box;
+  border-right: 1px solid #ccc;
+  width: 400px;
+  float: left;
+  height: 100%;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 1px -1px 10px rgba(0,0,0,.5) inset;
+}
+
+.Book > section {
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-left: 400px;
+  background: #e8e6e5;
+  height: 100%;
+}

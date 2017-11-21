@@ -65,6 +65,28 @@ app.delete("/Albums/:albumId/:photoId/:photoName", (req, res) => {
     .removeAlbumPhoto(albumId, photoId)
     .then(() => res.status(200).send({ albumId, photoId}));
 });
+app.get("/Bookmarks",(req,res)=>{
+  dbContext.getBookmarks()
+  .then(data=>{
+    res.send(data);
+  })
+})
+app.post("/Bookmarks",(req,res)=>{
+  const reqBody = req.body.params;
+  dbContext.addBookmark(reqBody)
+  .then(data=>res.send(data))
+})
+app.delete("/Bookmarks/:bookmarkId",(req,res)=>{
+  let id  = req.params.bookmarkId;
+  dbContext.removeBookmark(id)
+  .then(data=>res.send(data))
+})
+app.post("/Bookmarks/change",(req,res)=>{
+  console.log(req.body)
+  dbContext.changeBookmark(req.body.params)
+  .then((data)=>res.send(data));
+})
 app.listen(config.serverPort, () => {
   console.log(`Running on ${config.serverPort}`);
 });
+

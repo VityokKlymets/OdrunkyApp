@@ -18,6 +18,21 @@ export default {
     },
     changeAlbumData : params =>{
       return axios.post("/Albums/change",{params});
+    },
+   }
+  ,
+  bookmarks : {
+    addBookmark : params =>{
+      return axios.post("/Bookmarks",{params});
+    },
+    getBookmarks : ()=>{
+      return axios.get("/Bookmarks");
+    },
+    deleteBookmark : params =>{
+      return axios.delete(`/Bookmarks/${params.id}`);
+    },
+    changeBookmarkData : params =>{
+      return axios.post("/Bookmarks/change",{params});
     }
   }
 };

@@ -1,9 +1,8 @@
 .Info{
-    padding: 40px 20px;
     background: #e8e6e5;
-    box-shadow: 0px -2px 10px rgba(0,0,0,.5) inset;
     font-size: 1.1em;
     color : #664f46;
+    padding: 10px 0;
 }
 .Info ul li{
     border-bottom: 1px solid #ccc;

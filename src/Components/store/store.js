@@ -13,7 +13,13 @@ const initialState = {
     albumsLoaded : false,
     albumsLoading : false,
 
-  }
+    bookmarksLoaded : false,
+    bookmarksLoading: false,
+
+    bookmarkSending: false,
+    bookmarkSended : false,
+  },
+  bookmarks : []
 };
 let createStoreWithMiddleware = applyMiddleware(apiMiddleware)(createStore);
 

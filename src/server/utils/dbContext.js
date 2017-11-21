@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 import config from "../config";
 import path, { relative } from "path";
-import fs, { copyFileSync } from "fs";
+import fs, { copyFileSync, read } from "fs";
 import "../models/Album";
+import "../models/Bookmark";
 const SERVER_ROOT = config.serverRoot;
 const DEVELOPMENT_ROOT = config.developmentRoot;
 const Album = mongoose.model("Album");
-
+const Bookmark = mongoose.model("Bookmark");
 export function setUpConnection() {
   mongoose.connect(
     `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`
@@ -128,4 +129,48 @@ export function changeAlbumData(albumId, name, description) {
       });
     });
   });
+}
+
+export function getBookmarks(){
+  return new Promise((resolve,reject)=>{
+    Bookmark.find({},(err,res)=>{
+      if(err) reject(err);
+      resolve(res);
+    })
+  })
+}
+export function addBookmark(data){
+  return new Promise((resolve,reject)=>{
+    const bookmark = new Bookmark({
+      head : data.head,
+      text : data.text
+    })
+    bookmark.save((err,obj)=>{
+      if(err) reject(err);
+      resolve(obj);
+    })
+  })
+}
+export function removeBookmark(id){
+  return new Promise((resolve,reject)=>{
+    Bookmark.findOne({
+      _id : id
+    },(err,res)=>{
+      if(err) reject(err);
+      res.remove(resolve({id}));
+    })
+  })
+}
+export function changeBookmark(data){
+  return new Promise((resolve,reject)=>{
+    let id = data.id;
+    Bookmark.findOne({
+      _id : id
+    },(err,res)=>{
+      if(err) reject(err);
+      res.head = data.head ? data.head : res.head;
+      res.text = data.text ? data.text : res.text;
+      res.save(resolve(res));
+    })
+  })
 }

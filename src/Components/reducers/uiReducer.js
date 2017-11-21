@@ -5,6 +5,10 @@ import {
   ALBUMS_LOADED,
   ALBUM_SENDING,
   ALBUM_SENDED,
+  BOOKMARK_LOADED,
+  BOOKMARK_LOADING,
+  BOOKMARK_ADD_LOADING,
+  BOOKMARK_ADDED,
 } from "./types";
 
 export default function(state = {}, action) {
@@ -27,6 +31,18 @@ export default function(state = {}, action) {
     }
     case ALBUM_SENDED : {
       return { ...state, albumSending: false,albumSended: true}
+    }
+    case BOOKMARK_LOADING :{
+      return {...state , bookmarksLoading: true,bookmarksLoaded : false}
+    }
+    case BOOKMARK_LOADED : {
+      return {...state , bookmarksLoaded : true, bookmarksLoading: false}
+    }
+    case BOOKMARK_ADD_LOADING :{
+      return {...state , bookmarkSending : true,bookmarkSended:false}
+    }
+    case BOOKMARK_ADDED :{
+      return {...state,bookmarkSending :false,bookmarkSended : true}
     }
   }
 }

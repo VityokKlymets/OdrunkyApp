@@ -1,29 +1,42 @@
-.Slider{
+.Slider * {
+  box-sizing: border-box;
+}
+.Slider {
+  padding: 20px;
   margin: 20px 20px;
-  box-shadow: 1px -2px 10px rgba(0,0,0,.3);
+  box-shadow: 1px -2px 10px rgba(0, 0, 0, 0.3);
   position: relative;
+  vertical-align: top;
 }
 .Slider .slide {
   position: relative;
-  height: 730px;
+  float: left;
+  height: 600px;
+  width: 70%;
+}
+.Slider .content{
+  padding: 20px;
+  float : left;
+  width: 30%;
+}
+.Slider .content h1{
+  margin: 0;
+  border-bottom: 1px solid #ccc;
 }
 .Slider div.slide-image {
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: relative;
   height: 100%;
-  width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.Slider .controls-block{
-  transition: opacity .5s ease-in-out;
+.Slider .controls-block {
+  transition: opacity 0.5s ease-in-out;
 }
-.Slider .controls-block.active{
-  opacity: 1;
+.Slider .controls-block.active {
+  visibility: visible;
 }
-.Slider .controls-block{
-  opacity: 0;
+.Slider .controls-block {
+  visibility: visible;
 }
 .Slider .controls {
   position: absolute;
@@ -89,8 +102,10 @@
 .Slider .slide .right {
   top: 0;
   right: 0;
+  box-shadow: -40px -10px 40px rgba(0, 0, 0, 0.2) inset;
 }
 .Slider .slide .left {
   top: 0;
   left: 0;
+  box-shadow: 40px -10px 40px rgba(0, 0, 0, 0.2) inset;
 }

@@ -41,7 +41,9 @@ class Slider extends React.Component {
           backgroundImage: `url(${this.Images[this.state.currentImage]})`
         }}
         className={"slide-image"}
-      />
+      >
+        {this.renderControls()}
+      </div>
     );
   }
   renderPreloader() {
@@ -58,58 +60,49 @@ class Slider extends React.Component {
       </div>
     );
   }
-  render() {
-    let Slides = this.Images.map((elem, idx) => {
-      return (
-        <div
-          key={idx}
-          style={{ backgroundImage: `url(${elem})` }}
-          className={`slide-image ${this.state.currentImage === idx
-            ? "active"
-            : ""}`}
-        />
-      );
-    });
-
+  renderControls() {
     return (
-      <div className="Slider">
+      <div className="controls-block">
+        <div
+          className={`left${this.state.currentImage === 0 ? "" : " enable"}`}
+          style={{ backgroundImage: `url(${leftImg})` }}
+          onClick={() => {
+            this.prevImage();
+          }}
+        />
+        <div
+          className={`right${this.state.currentImage === this.Images.length - 1
+            ? ""
+            : " enable"}`}
+          style={{ backgroundImage: `url(${rightImg})` }}
+          onClick={() => {
+            this.nextImage();
+          }}
+        />
+        <div className="controls">
+          <div className="buttons">
+            {this.Images.map((ignore, idx) => {
+              return (
+                <button
+                  key={idx}
+                  className={this.state.currentImage === idx ? "active" : null}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  render() {
+    return (
+      <div className="Slider clearfix">
         <div className="slide">
           {this.state.imageLoaded ? this.renderImage() : this.renderPreloader()}
-          <div className="controls-block">
-            <div
-              className={`left${this.state.currentImage === 0
-                ? ""
-                : " enable"}`}
-              style={{ backgroundImage: `url(${leftImg})` }}
-              onClick={() => {
-                this.prevImage();
-              }}
-            />
-            <div
-              className={`right${this.state.currentImage ===
-              this.Images.length - 1
-                ? ""
-                : " enable"}`}
-              style={{ backgroundImage: `url(${rightImg})` }}
-              onClick={() => {
-                this.nextImage();
-              }}
-            />
-            <div className="controls">
-              <div className="buttons">
-                {this.Images.map((ignore, idx) => {
-                  return (
-                    <button
-                      key={idx}
-                      className={
-                        this.state.currentImage === idx ? "active" : null
-                      }
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+        </div>
+        <div className="content">
+          <h1>Lorem ipsum dolor sit.</h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam consequatur odit non deleniti delectus saepe cum, molestias ipsam repudiandae ut fugiat blanditiis aut maiores perferendis et? Aliquam temporibus omnis nobis!</p>
         </div>
       </div>
     );

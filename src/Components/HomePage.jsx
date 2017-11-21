@@ -4,6 +4,7 @@ import Header from "./Header";
 import Foreword from "./Foreword";
 import Info from "./Info";
 import Footer from "./Footer";
+import Book from './Book';
 import Passport from "./Passport";
 import Images from "../Content/Images/sliderImages";
 import $ from "jquery";
@@ -18,7 +19,7 @@ class HomePage extends React.Component {
         <Header />
         <Slider Images={ImagesSrc} />
         <Passport />
-        <Foreword />
+        <Book/>
         <Info />
         <Footer />
       </div>
@@ -30,6 +31,7 @@ class HomePage extends React.Component {
       let slide = $(".Slider .slide"),
         controlsBlock = $(".Slider .controls-block"),
         fore_text = $(".Foreword .fore-text");
+        
       $(window).bind("scroll", () => {
         let wScroll = $(window).scrollTop();
         function SlideIt(DOMElement, speed) {
@@ -42,7 +44,7 @@ class HomePage extends React.Component {
         function inFocus(jqueryElement) {
           let offsetTop = jqueryElement.offset().top,
             height = $(window).height();
-          return wScroll > offsetTop-100&& wScroll < offsetTop+height;
+          return wScroll > offsetTop-200&& wScroll < offsetTop+height;
         }
 
         fore_text.each((index, element) => {

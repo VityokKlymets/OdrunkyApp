@@ -51,7 +51,7 @@ class PhotoForm extends React.Component {
     return (
       <div>
         <div className="photo-background" />
-        <div className="AlbumForm">
+        <div className="PhotoForm fixedForm">
           <form
             onSubmit={e => {
               this.OnSubmit(e);
