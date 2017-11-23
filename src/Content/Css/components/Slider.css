@@ -46,7 +46,7 @@
   right: 0;
   bottom: 140px;
   text-align: center;
-  z-index: 1;
+  z-index: 9;
 }
 .Slider .slide .right,
 .Slider .slide .left {
