@@ -68,6 +68,7 @@ class Book extends React.Component {
   }
   renderBook() {
     const activeBookmark = this.props.bookmarks[this.state.current];
+    if(activeBookmark)
     this.selectedBookmark = {
       id: activeBookmark._id
     };
