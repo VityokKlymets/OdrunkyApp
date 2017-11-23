@@ -1,12 +1,8 @@
 {
-  "main.css": "static/css/main.211c17f3.css",
-  "main.css.map": "static/css/main.211c17f3.css.map",
-  "main.js": "static/js/main.8a081926.js",
-  "main.js.map": "static/js/main.8a081926.js.map",
-  "static\\media\\DSCN2977.jpg": "static/media/DSCN2977.e44a14cc.jpg",
-  "static\\media\\DSCN3385.jpg": "static/media/DSCN3385.d36319f2.jpg",
-  "static\\media\\DSCN3530.jpg": "static/media/DSCN3530.6c71b641.jpg",
-  "static\\media\\elizabet-olsen-elizabeth-2203.jpg": "static/media/elizabet-olsen-elizabeth-2203.464c5a3c.jpg",
+  "main.css": "static/css/main.b148d387.css",
+  "main.css.map": "static/css/main.b148d387.css.map",
+  "main.js": "static/js/main.ce868ac0.js",
+  "main.js.map": "static/js/main.ce868ac0.js.map",
   "static\\media\\ic_add_48px.svg": "static/media/ic_add_48px.45a0a5e5.svg",
   "static\\media\\ic_business_center_48px.svg": "static/media/ic_business_center_48px.def05a3f.svg",
   "static\\media\\ic_chevron_left_48px.svg": "static/media/ic_chevron_left_48px.5bbac221.svg",
@@ -16,5 +12,8 @@
   "static\\media\\ic_delete_forever_48px.svg": "static/media/ic_delete_forever_48px.40996f36.svg",
   "static\\media\\ic_highlight_off_48px.svg": "static/media/ic_highlight_off_48px.e0540530.svg",
   "static\\media\\ic_people_48px.svg": "static/media/ic_people_48px.6dbd342c.svg",
-  "static\\media\\ic_school_48px.svg": "static/media/ic_school_48px.a0db8a45.svg"
+  "static\\media\\ic_school_48px.svg": "static/media/ic_school_48px.a0db8a45.svg",
+  "static\\media\\leaves-trees-sun-sunset-rays.jpg": "static/media/leaves-trees-sun-sunset-rays.28a40491.jpg",
+  "static\\media\\les-derevia-solntse-luchi-osen.jpg": "static/media/les-derevia-solntse-luchi-osen.d8add405.jpg",
+  "static\\media\\zakat-priroda-osen-1.jpg": "static/media/zakat-priroda-osen-1.de1ce0d3.jpg"
 }

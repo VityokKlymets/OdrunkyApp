@@ -19,15 +19,6 @@ class Header extends React.Component {
             </li>
           </ul>
         </nav>
-        <div className="head">
-          <div
-            className="logo"
-            style={{
-              backgroundImage: `url(${img})`
-            }}
-          />
-          <h1>Школа Одринки</h1>
-        </div>
       </div>
     );
   }

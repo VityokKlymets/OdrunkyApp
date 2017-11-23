@@ -23,4 +23,6 @@
 .Passport .pass-block span{
     display: block;
     font-weight: bold;
+    font-size: 1.2em;
+    text-shadow: 3px 3px 1px rgba(0,0,0,.3);
 }

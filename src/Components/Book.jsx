@@ -4,25 +4,25 @@ import CreateButton from "./buttons/CreateButton";
 import AddButton from "./buttons/AddButton";
 import Preloader from "./Preloader";
 import BookForm from "./BookForm";
-import ClearButton from  './buttons/ClearButton'
+import ClearButton from "./buttons/ClearButton";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
   addBookmark,
   changeBookmarkData,
   loadBookMark,
-  deleteBookMark,
+  deleteBookMark
 } from "./actionCreators/bookmark";
 
 class Book extends React.Component {
   constructor(props) {
     super(props);
     this.props.loadBookMark();
+    this.selectedBookmark = {};
     this.state = {
       current: 0,
       edit: false,
-      bookForm: false,
-      selectedBookmark : {}
+      bookForm: false
     };
   }
   onNavClick(e) {
@@ -30,28 +30,23 @@ class Book extends React.Component {
     this.setState({
       current: index
     });
-    this.setState({
-      selectedBookmark : this.props.bookmarks[this.state.current]
-    })
+    this.selectedBookmark = {
+      id: this.props.bookmarks[index]._id
+    };
   }
   editToggle() {
     this.setState({
       edit: !this.state.edit
     });
-    if(this.state.edit){
-      console.log(this.state.selectedBookmark);
-      this.props.changeBookmarkData(this.state.selectedBookmark)    
+    if (this.state.edit) {
+      this.props.changeBookmarkData(this.selectedBookmark);
     }
-  }
-  onDataChange(e,id){
-    console.log(this.state.selectedBookmark);
-    this.setState({
-      selectedBookmark : {
-        id : id,
-        ...this.state.selectedBookmark,
-        [e.target.name] : e.target.value
-      }
-    })
+  } 
+  onDataChange(e) {
+    this.selectedBookmark = {
+      ...this.selectedBookmark,
+      [e.target.name]: e.target.value
+    };
   }
   toggleAddBookForm() {
     this.setState({
@@ -68,11 +63,14 @@ class Book extends React.Component {
   renderOnSendPreloader() {
     return <Preloader type="medium" fixed />;
   }
-  onClearClick(id){
-    this.props.deleteBookMark({id})
+  onClearClick(id) {
+    this.props.deleteBookMark({ id });
   }
   renderBook() {
     const activeBookmark = this.props.bookmarks[this.state.current];
+    this.selectedBookmark = {
+      id: activeBookmark._id
+    };
     return (
       <div className="Book clearfix">
         <NavBar>
@@ -90,15 +88,21 @@ class Book extends React.Component {
         <nav>
           <ul>
             {this.props.bookmarks.map((elem, idx) => {
-              return this.state.edit && idx===this.state.current ? (
-                <label  key={idx}>
-                <input
-                  type="text"
-                  defaultValue={elem.head}
-                  name="head"
-                  onChange={(e)=>{this.onDataChange(e,this.props.bookmarks[idx]._id)}}
-                />
-                <ClearButton onClick={()=>{this.onClearClick(this.props.bookmarks[idx]._id)}}/>
+              return this.state.edit && idx === this.state.current ? (
+                <label key={idx}>
+                  <input
+                    type="text"
+                    defaultValue={elem.head}
+                    name="head"
+                    onChange={e => {
+                      this.onDataChange(e);
+                    }}
+                  />
+                  <ClearButton
+                    onClick={() => {
+                      this.onClearClick(this.props.bookmarks[idx]._id);
+                    }}
+                  />
                 </label>
               ) : (
                 <li
@@ -123,7 +127,9 @@ class Book extends React.Component {
                   defaultValue={activeBookmark.text}
                   name="text"
                   cols="80"
-                  onChange={(e)=>{this.onDataChange(e,activeBookmark._id)}}
+                  onChange={e => {
+                    this.onDataChange(e);
+                  }}
                 />
               ) : (
                 <p>{activeBookmark.text} </p>

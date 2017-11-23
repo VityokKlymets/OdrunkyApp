@@ -14,7 +14,7 @@ const initialState = {
     albumsLoading : false,
 
     bookmarksLoaded : false,
-    bookmarksLoading: false,
+    bookmarksLoading: true,
 
     bookmarkSending: false,
     bookmarkSended : false,

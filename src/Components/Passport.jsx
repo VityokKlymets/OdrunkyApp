@@ -2,20 +2,8 @@ import React from "react";
 import pupilImg from "../Content/Images/Icons/ic_people_48px.svg";
 import schoolImg from "../Content/Images/Icons/ic_school_48px.svg";
 import bsnImg from "../Content/Images/Icons/ic_business_center_48px.svg";
+import PassportBlock from './PassportBlock';
 class Passport extends React.Component {
-  RenderBlock(description, count, image,key) {
-    return (
-      <div className="pass-block" key={key}>
-        <h3>{description}</h3>
-        <div
-          className="pass-img"
-          style={{ backgroundImage: `url(${image})` }}
-        />
-        <span>{count}</span>
-      </div>
-    );
-  }
-
   render() {
     const renderData = [
       {
@@ -37,7 +25,7 @@ class Passport extends React.Component {
     return (
       <div className="Passport">
         {renderData.map((data, idx) => {
-          return this.RenderBlock(data.description, data.count, data.image,idx);
+          return <PassportBlock image = {data.image} count = {data.count} description={data.description} key={idx}/> 
         })}
       </div>
     );

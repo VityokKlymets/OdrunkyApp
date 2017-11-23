@@ -7,7 +7,7 @@
 .PhotoGrid .GridElement{
     position: relative;
     float: left;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     width: 31.333333%;
     background: #f9f9f9;

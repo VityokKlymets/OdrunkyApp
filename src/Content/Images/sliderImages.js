@@ -1,3 +1,3 @@
-export default [require('./DSCN3385.jpg'),
-require('./DSCN2977.jpg'),
-require('./DSCN3530.jpg')];
+export default [require('./leaves-trees-sun-sunset-rays.jpg'),
+require('./zakat-priroda-osen-1.jpg'),
+require('./les-derevia-solntse-luchi-osen.jpg')];

@@ -3,19 +3,19 @@ import HomePage from "./HomePage";
 import GalleryPage from "./GalleryPage";
 import store from "./store/store";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route,HashRouter} from "react-router-dom";
 import css from "../Content/Css/index";
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter>
           <div>
             <Route exact path="/" component={HomePage} />
             <Route  path="/gallery/" component={GalleryPage} />
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     );
   }

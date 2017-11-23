@@ -97,6 +97,28 @@ app.delete("/Albums/:albumId/:photoId/:photoName", function (req, res) {
     return res.status(200).send({ albumId: albumId, photoId: photoId });
   });
 });
+app.get("/Bookmarks", function (req, res) {
+  dbContext.getBookmarks().then(function (data) {
+    res.send(data);
+  });
+});
+app.post("/Bookmarks", function (req, res) {
+  var reqBody = req.body.params;
+  dbContext.addBookmark(reqBody).then(function (data) {
+    return res.send(data);
+  });
+});
+app.delete("/Bookmarks/:bookmarkId", function (req, res) {
+  var id = req.params.bookmarkId;
+  dbContext.removeBookmark(id).then(function (data) {
+    return res.send(data);
+  });
+});
+app.post("/Bookmarks/change", function (req, res) {
+  dbContext.changeBookmark(req.body.params).then(function (data) {
+    return res.send(data);
+  });
+});
 app.listen(_config2.default.serverPort, function () {
   console.log("Running on " + _config2.default.serverPort);
 });

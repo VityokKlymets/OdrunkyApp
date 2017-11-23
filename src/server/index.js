@@ -82,7 +82,6 @@ app.delete("/Bookmarks/:bookmarkId",(req,res)=>{
   .then(data=>res.send(data))
 })
 app.post("/Bookmarks/change",(req,res)=>{
-  console.log(req.body)
   dbContext.changeBookmark(req.body.params)
   .then((data)=>res.send(data));
 })

@@ -1,5 +1,4 @@
 import './Footer.css';
-import './Foreword.css';
 import './Header.css';
 import './Info.css';
 import './SlidedNav.css';
