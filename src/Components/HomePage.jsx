@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "./Slider";
-import Header from "./Header";
+import NavMenu from "./NavMenu";
+import Header from './Header';
 import Info from "./Info";
 import Footer from "./Footer";
 import Book from './Book';
@@ -14,7 +15,8 @@ class HomePage extends React.Component {
     const ImagesSrc = Images;
     return (
       <div className="HomePage">
-        <Header />
+        <NavMenu />
+        <Header/>
         <Slider Images={ImagesSrc} />
         <Passport />
         <Book/>

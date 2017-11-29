@@ -1,26 +1,24 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import img from "../Content/Images/sova.jpg";
+import logoPic from "../Content/Images/sova.jpg";
+import {connect} from 'react-redux';
+import {login} from './actionCreators/gallery/albums';
 class Header extends React.Component {
+  countOfClicks  = 0
+  maxClicks = 5
   render() {
     return (
       <div className="Header">
-        <nav>
-          <ul>
-            <li>
-              <NavLink exact to="/" activeClassName="selected">
-                Головна
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/gallery" activeClassName="selected">
-                Галерея
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        <div className="logo">
+          <img src={logoPic} alt="logo" onClick={()=>{
+            this.countOfClicks++;
+            if(this.countOfClicks> this.maxClicks){
+              this.props.login();
+            }
+          }}/>
+        </div>
+        <h1>Одринківська ЗОШ І–ІІ ступенів</h1>
       </div>
     );
   }
 }
-export default Header;
+export default connect(null,{login})(Header);

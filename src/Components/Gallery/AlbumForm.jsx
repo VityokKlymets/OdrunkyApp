@@ -3,10 +3,12 @@ import CloseButton from "../buttons/CloseButton";
 class AlbumForm extends React.Component {
   constructor(props) {
     super(props);
+    let date = new Date().toLocaleDateString();
+    console.log(date);
     this.state = {
       data: {
         name: "",
-        description: "",
+        description: date,
         images: []
       }
     };
@@ -77,15 +79,17 @@ class AlbumForm extends React.Component {
               type="text"
               name="name"
               id="name"
+              value={this.state.data.name}
               onChange={e => {
                 this.onchange(e);
               }}
             />
-            <label htmlFor="description">Опис :</label>
+            <label htmlFor="description">дата :</label>
             <input
               type="text"
               name="description"
               id="description"
+              value = {this.state.data.description}
               onChange={e => {
                 this.onchange(e);
               }}

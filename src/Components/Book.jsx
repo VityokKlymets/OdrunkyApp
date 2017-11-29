@@ -39,9 +39,10 @@ class Book extends React.Component {
       edit: !this.state.edit
     });
     if (this.state.edit) {
+      console.log(this.selectedBookmark);
       this.props.changeBookmarkData(this.selectedBookmark);
     }
-  } 
+  }
   onDataChange(e) {
     this.selectedBookmark = {
       ...this.selectedBookmark,
@@ -65,27 +66,18 @@ class Book extends React.Component {
   }
   onClearClick(id) {
     this.props.deleteBookMark({ id });
+    this.setState({
+      current: this.state.current > 0 ? this.state.current - 1 : 0
+    });
   }
   renderBook() {
     const activeBookmark = this.props.bookmarks[this.state.current];
-    if(activeBookmark)
-    this.selectedBookmark = {
-      id: activeBookmark._id
-    };
+    if (activeBookmark)
+      this.selectedBookmark = {
+        id: activeBookmark._id
+      };
     return (
       <div className="Book clearfix">
-        <NavBar>
-          <CreateButton
-            onClick={() => {
-              this.editToggle();
-            }}
-          />
-          <AddButton
-            onClick={() => {
-              this.toggleAddBookForm();
-            }}
-          />
-        </NavBar>
         <nav>
           <ul>
             {this.props.bookmarks.map((elem, idx) => {
@@ -141,9 +133,26 @@ class Book extends React.Component {
       </div>
     );
   }
+  renderNavBar(){
+    return(
+      <NavBar>
+      <CreateButton
+        onClick={() => {
+          this.editToggle();
+        }}
+      />
+      <AddButton
+        onClick={() => {
+          this.toggleAddBookForm();
+        }}
+      />
+    </NavBar>
+    )
+  }
   render() {
     return (
       <div className="book-wrapper">
+        {this.props.isAuthenticated && this.renderNavBar()}
         {this.state.bookForm && (
           <BookForm
             onCloseForm={() => {
@@ -167,7 +176,7 @@ class Book extends React.Component {
 const mapStateToProps = state => {
   return {
     bookmarks: state.bookmarks,
-
+    isAuthenticated : state.ui.isAuthenticated,
     bookmarksLoading: state.ui.bookmarksLoading,
     bookmarksLoaded: state.ui.bookmarksLoaded,
 

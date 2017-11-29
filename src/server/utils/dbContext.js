@@ -167,10 +167,15 @@ export function changeBookmark(data){
     Bookmark.findOne({
       _id : id
     },(err,res)=>{
-      if(err) reject(err);
-      res.head = data.head ? data.head : res.head;
-      res.text = data.text ? data.text : res.text;
-      res.save(resolve(res));
+      if(err) {
+        reject(err);
+      }
+      if(res){
+       res.head = data.head ? data.head : res.head;
+       res.text = data.text ? data.text : res.text;
+       res.save(resolve(res));
+      }
+      resolve({});
     })
   })
 }

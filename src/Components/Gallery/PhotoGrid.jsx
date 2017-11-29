@@ -22,6 +22,25 @@ class PhotoGrid extends React.Component {
       photoForm: false
     };
   }
+  renderNavBar() {
+    return (
+      <NavBar>
+        <BackButton path="/gallery" />
+        <CreateButton
+          onClick={() => {
+            this.EditToggle();
+          }}
+        />
+      </NavBar>
+    );
+  }
+  renderNavBarSimple() {
+    return (
+      <NavBar>
+        <BackButton path="/gallery" />
+      </NavBar>
+    );
+  }
   render() {
     const albumId = this.props.match.params.albumId;
     const images = this.props.albums.filter(album => {
@@ -29,14 +48,9 @@ class PhotoGrid extends React.Component {
     })[0].images;
     return (
       <div>
-        <NavBar>
-          <BackButton path="/gallery" />
-          <CreateButton
-            onClick={() => {
-              this.EditToggle();
-            }}
-          />
-        </NavBar>
+        {this.props.isAuthenticated
+          ? this.renderNavBar()
+          : this.renderNavBarSimple()}
         <div className="PhotoGrid">
           {images.map((img, idx) => {
             return (
@@ -100,7 +114,8 @@ class PhotoGrid extends React.Component {
 }
 const mapStateToProps = store => {
   return {
-    albums: store.albums
+    albums: store.albums,
+    isAuthenticated: store.ui.isAuthenticated
   };
 };
 const mapDispatchToProps = dispatch => {

@@ -1,4 +1,10 @@
 .Footer {
     background: #826357;
     padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 2px -3px 10px rgba(0,0,0,.5) inset;
+}
+.Footer span{
+    border-bottom: 1px solid rgb(63, 44, 33);
 }

@@ -9,8 +9,8 @@ class Slider extends React.Component {
     this.Images = props.Images;
     this.currentImage = 0;
     this.state = {
-      imageLoaded : props.Images.map(()=>false)
-    }
+      imageLoaded: props.Images.map(() => false)
+    };
   }
   renderImage() {
     return this.props.Images.map((elem, idx) => {
@@ -27,8 +27,8 @@ class Slider extends React.Component {
             src={this.Images[this.currentImage]}
             onLoad={() => {
               let newValue = this.state.imageLoaded.slice();
-              newValue[idx] = true
-              this.setState({imageLoaded : newValue})
+              newValue[idx] = true;
+              this.setState({ imageLoaded: newValue });
             }}
             className="hide"
           />
@@ -38,9 +38,7 @@ class Slider extends React.Component {
     });
   }
   renderPreloader() {
-    return (
-        <Preloader transparent type='small'/>
-    );
+    return <Preloader transparent type="small" />;
   }
   renderControls() {
     return (
@@ -64,7 +62,7 @@ class Slider extends React.Component {
         <div className="slide">
           {this.renderControls()}
           <div className="slides" ref="slides">
-              { this.renderImage()}
+            {this.renderImage()}
           </div>
         </div>
         <div className="content">
@@ -85,23 +83,55 @@ class Slider extends React.Component {
       left = Slider.find(".left"),
       right = Slider.find(".right");
     const slidesCount = this.props.Images.length;
-    right.bind("click", () => {
+    const nextSlide = () => {
       if (this.currentImage < slidesCount - 1) {
         this.currentImage++;
         $(slides).css("left", `-${this.currentImage * 100}%`);
         left.removeClass("disabled");
+        return true;
       }
       if (this.currentImage === slidesCount - 1) {
         right.addClass("disabled");
+        return false;
       }
+    };
+    const prevSlide = () => {
+      {
+        if (this.currentImage > 0) {
+          this.currentImage--;
+          $(slides).css("left", `-${this.currentImage * 100}%`);
+          right.removeClass("disabled");
+          return true;
+        }
+        if (this.currentImage === 0) {
+          left.addClass("disabled");
+          return false;
+        }
+      }
+    };
+    let slidingToRight = true;
+    let slidingToLeft = false;
+    let sliding = setInterval(() => {
+      if (slidingToRight) {
+        if (!nextSlide()) {
+          slidingToRight = false;
+          slidingToLeft = true;
+        }
+      }
+      if (slidingToLeft) {
+        if (!prevSlide()) {
+          slidingToLeft = false;
+          slidingToRight = true;
+        }
+      }
+    }, 3000);
+    right.bind("click", () => {
+      clearInterval(sliding);
+      nextSlide();
     });
     left.bind("click", () => {
-      if (this.currentImage > 0) {
-        this.currentImage--;
-        $(slides).css("left", `-${this.currentImage * 100}%`);
-        right.removeClass("disabled");
-      }
-      if (this.currentImage === 0) left.addClass("disabled");
+      clearInterval(sliding);
+      prevSlide();
     });
   };
 }

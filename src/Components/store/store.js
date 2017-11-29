@@ -5,6 +5,7 @@ import apiMiddleware from "./middleware/apiMiddleware";
 const initialState = {
   albums: [],
   ui: {
+    isAuthenticated : false,
     albumsEdit: false,
     albumSending : false,
     albumSended : false,

@@ -19,7 +19,7 @@ class AlbumPreviews extends React.Component {
     super(props);
   }
   renderPreloader() {
-    return <Preloader type="small" fixed={true}/>;
+    return <Preloader type="small" fixed={true} />;
   }
   renderNavbar() {
     return (
@@ -35,6 +35,13 @@ class AlbumPreviews extends React.Component {
             this.props.toggleAddAlbumForm();
           }}
         />
+      </NavBar>
+    );
+  }
+  renderNavbarSimple() {
+    return (
+      <NavBar>
+        <BackButton path="/" />
       </NavBar>
     );
   }
@@ -69,8 +76,10 @@ class AlbumPreviews extends React.Component {
   render() {
     return (
       <div>
-        {this.renderNavbar()}
-        {this.props.albumSending&&!this.props.albumSended
+        {this.props.isAuthenticated
+          ? this.renderNavbar()
+          : this.renderNavbarSimple()}
+        {this.props.albumSending && !this.props.albumSended
           ? this.renderPreloader()
           : this.renderPreviews()}
         {this.props.albumFormData && this.renderAlbumForm()}
@@ -88,8 +97,9 @@ const mapStateToProps = state => {
     AlbumData: state.albums,
     edit: state.ui.albumsEdit,
     albumFormData: state.ui.albumFormData,
-    albumSended : state.ui.albumSended,
+    albumSended: state.ui.albumSended,
     albumSending: state.ui.albumSending,
+    isAuthenticated: state.ui.isAuthenticated
   };
 };
 const mapDispathToProps = dispatch => {

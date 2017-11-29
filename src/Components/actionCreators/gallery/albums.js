@@ -3,7 +3,8 @@ import {
   REMOVE_ALBUM_PHOTO,
   REMOVE_ALBUM,
   TURN_EDIT_ALBUMS,
-  TOGGLE_ADD_ALBUM_FORM
+  TOGGLE_ADD_ALBUM_FORM,
+  AUTHENTICATE,
 } from "../../reducers/types";
 import api from "../../../api";
 export const addAlbum = params => {
@@ -76,4 +77,7 @@ export const toggleAddAlbumForm = ()=> {
   return {
     type : TOGGLE_ADD_ALBUM_FORM
   }
+}
+export const login = () =>{
+  return {type : AUTHENTICATE}
 }

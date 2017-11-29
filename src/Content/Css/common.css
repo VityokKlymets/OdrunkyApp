@@ -6,6 +6,10 @@ body {
   background: #fffffc;
   /* background-image: url('Images/pink dust.png'); */
 }
+figure,h1{
+  margin: 0;
+  padding: 0;
+}
 button {
   outline: none;
   background-color: transparent;
@@ -61,6 +65,10 @@ button:hover span {
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+}
+img{
+  width: 100%;
+  height: 100%;
 }
 .preload-container
 {

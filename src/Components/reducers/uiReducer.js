@@ -9,6 +9,7 @@ import {
   BOOKMARK_LOADING,
   BOOKMARK_ADD_LOADING,
   BOOKMARK_ADDED,
+  AUTHENTICATE,
 } from "./types";
 
 export default function(state = {}, action) {
@@ -43,6 +44,9 @@ export default function(state = {}, action) {
     }
     case BOOKMARK_ADDED :{
       return {...state,bookmarkSending :false,bookmarkSended : true}
+    }
+    case AUTHENTICATE : {
+      return {...state, isAuthenticated : true}
     }
   }
 }

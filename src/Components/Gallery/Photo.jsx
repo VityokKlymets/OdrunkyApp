@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import CloseButton from "../buttons/CloseButton";
 import { Link } from "react-router-dom";
+import leftArrow from "../../Content/Images/Icons/ic_chevron_left_48px.svg";
+import rightArrow from "../../Content/Images/Icons/ic_chevron_right_48px.svg";
 class Photo extends React.Component {
   constructor(props) {
     super(props);
@@ -36,17 +38,16 @@ class Photo extends React.Component {
     return (
       <div>
         <div className="photo-background" />
-        <div className="Photo">
+        <div
+          className="Photo"
+          style={{
+            backgroundImage: `url(${this.state.images[this.state.currentId]})`
+          }}
+        >
           <div
             className="left"
             onClick={() => {
               this.previousImg();
-            }}
-          />
-          <div
-            className="full-img"
-            style={{
-              backgroundImage: `url(${this.state.images[this.state.currentId]})`
             }}
           />
           <div

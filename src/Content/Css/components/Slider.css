@@ -66,10 +66,10 @@
 .Slider .slide .right {
   top: 0;
   right: 0;
-  box-shadow: -40px -10px 40px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: -40px -10px 40px rgba(0, 0, 0, .1) inset;
 }
 .Slider .slide .left {
   top: 0;
   left: 0;
-  box-shadow: 40px -10px 40px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 40px -10px 40px rgba(0, 0, 0, .1) inset;
 }

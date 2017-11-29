@@ -1,3 +1,6 @@
-export default [require('./leaves-trees-sun-sunset-rays.jpg'),
-require('./zakat-priroda-osen-1.jpg'),
-require('./les-derevia-solntse-luchi-osen.jpg')];
+export default [
+  require("./DSCN2974.jpg"),
+  require("./DSCN2979.jpg"),
+  require("./DSCN3548.jpg"),
+  require("./IMG_20170915_093427.jpg")
+];

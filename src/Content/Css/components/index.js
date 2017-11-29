@@ -1,7 +1,7 @@
 import './Footer.css';
-import './Header.css';
+import './NavMenu.css';
+import './Header.css'
 import './Info.css';
-import './SlidedNav.css';
 import './Slider.css';
 import './ToDoList.css';
 import './NavBar.css';

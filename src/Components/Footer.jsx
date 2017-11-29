@@ -4,7 +4,7 @@ function Footer(){
     
     return(
         <div className='Footer'>
-           <p>Lorem ipsum dolor sit amet. {date.toDateString()}</p>
+           <span>Одринки {date.toLocaleDateString()}</span>
         </div>
     )
 }

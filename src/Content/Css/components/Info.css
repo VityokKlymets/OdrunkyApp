@@ -1,9 +1,19 @@
 .Info{
     background: #e8e6e5;
     font-size: 1.1em;
-    color : #664f46;
+    color : #3a2d28;
     padding: 50px 0;
 }
 .Info ul li{
+    list-style: none;
     border-bottom: 1px solid #ccc;
+}
+.Info span:first-child{
+    font-weight: bold;
+    color: #362925;
+    float: left;
+    width: 400px;
+    padding-left: 20px;
+}
+.Info span:last-child{
 }
